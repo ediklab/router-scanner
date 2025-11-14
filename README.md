@@ -22,12 +22,6 @@ chmod +x router_scanner.py
 
 ## Uso
 
-### Modo demo (sin escanear nada real)
-```bash
-python3 router_scanner.py --demo
-```
-
-### Escanear tu IP pública
 1. Obtén tu IP pública:
 ```bash
 curl ifconfig.me
@@ -76,8 +70,8 @@ Si el script encuentra puertos abiertos:
 ## Contacto
 
 Si tienes dudas o sugerencias:
-- TikTok: [@3diklab](https://tiktok.com/@3diklab)
-- GitHub Issues: [Personal-branding/issues](https://github.com/cristher99/Personal-branding/issues)
+- TikTok: [@ediklab](https://tiktok.com/@ediklab)
+- GitHub Issues: [router-scanner/issues](https://github.com/ediklab/router-scanner/issues)
 
 ---
 

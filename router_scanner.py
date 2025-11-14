@@ -1,10 +1,9 @@
 #!/usr/bin/env python3
 """
-Router External Scanner - DEMO EDUCATIVA
+Router External Scanner
 Escanea TU IP pública buscando puertos expuestos
 
-Uso: python3 router_exposure_scanner.py <IP>
-     python3 router_exposure_scanner.py --demo
+Uso: python3 router_scanner.py <IP>
 """
 
 import socket
@@ -47,15 +46,7 @@ def scan_port(ip, port, timeout=1.5):
     except:
         return False
 
-def scan_demo_mode(port):
-    """Demo: simula puertos típicamente abiertos en routers"""
-    # SSH, HTTP, TR-069 (típico en Movistar/Vodafone/Orange)
-    typically_open = [22, 80, 7547]
-    # Delay realista por puerto (2-3 segundos cada uno)
-    time.sleep(2.5)
-    return port in typically_open
-
-def scan_target(ip, demo=False):
+def scan_target(ip):
     """Escanea puertos críticos"""
     print(f"Target: {BOLD}{ip}{RESET}")
     print(f"Ports: {', '.join(map(str, CRITICAL_PORTS.keys()))}\n")
@@ -63,11 +54,7 @@ def scan_target(ip, demo=False):
     vulnerable = []
 
     for port, service in CRITICAL_PORTS.items():
-        # Escanear
-        if demo:
-            is_open = scan_demo_mode(port)
-        else:
-            is_open = scan_port(ip, port)
+        is_open = scan_port(ip, port)
 
         # Output compacto
         if is_open:
@@ -106,32 +93,24 @@ def main():
     """Main function"""
     # Verificar argumentos
     if len(sys.argv) < 2:
-        print(f"Usage: {sys.argv[0]} <IP> | --demo")
+        print(f"Usage: {sys.argv[0]} <IP>")
         print(f"\nExample:")
         print(f"  {sys.argv[0]} 203.0.113.42")
-        print(f"  {sys.argv[0]} --demo")
         sys.exit(1)
 
-    # Modo demo o IP real
-    demo_mode = False
-    if sys.argv[1] == "--demo":
-        target_ip = "203.0.113.42"  # TEST-NET-3
-        demo_mode = True
-        print(f"{YELLOW}[!] DEMO MODE{RESET}\n")
-    else:
-        target_ip = sys.argv[1]
+    target_ip = sys.argv[1]
 
     # Banner
     print_banner()
 
     # Escanear
-    vulnerable = scan_target(target_ip, demo=demo_mode)
+    vulnerable = scan_target(target_ip)
 
     # Resumen
     show_summary(vulnerable)
 
     # Footer
-    print(f"{GRAY}github.com/3diklab{RESET}")
+    print(f"{GRAY}github.com/ediklab{RESET}")
 
 if __name__ == "__main__":
     try:
