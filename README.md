@@ -70,7 +70,7 @@ Si el script encuentra puertos abiertos:
 ## Contacto
 
 Si tienes dudas o sugerencias:
-- TikTok: [@ediklab](https://tiktok.com/@ediklab)
+- TikTok: [@3diklab](https://tiktok.com/@3diklab)
 - GitHub Issues: [router-scanner/issues](https://github.com/ediklab/router-scanner/issues)
 
 ---
