@@ -15,8 +15,8 @@ Escanea tu IP pública buscando puertos críticos que podrían estar expuestos:
 ## Instalación
 
 ```bash
-git clone https://github.com/cristher99/Personal-branding.git
-cd Personal-branding/tools
+git clone https://github.com/ediklab/router-scanner.git
+cd router-scanner/
 chmod +x router_scanner.py
 ```
 
